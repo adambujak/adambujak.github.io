@@ -28,9 +28,9 @@ linkedin: 'bujakadam'
 # Navigation
 navigation:
   - text: About
-    url: /about/
+    url: /about
   - text: Contact Me
-    url: /contact/
+    url: /contact
 
 # Required Plugins
 plugins_dir:
