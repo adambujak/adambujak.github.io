@@ -28,8 +28,6 @@ github: 'adambujak'
 navigation:
   - text: About
     url: /about/
-  - text: Style Guide
-    url: /style-guide/
   - text: Contact Me
     url: /contact/
 
