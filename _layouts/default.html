@@ -63,6 +63,9 @@
         <footer id="colophon" class="site-footer outer">
             <div class="site-footer-inside">
                 {% include social-links.html %}
+                <p class="site-info">
+                    <a href="#">{{ site.name }}</a> &copy; {{ site.time | date: '%Y' }} . 
+                </p>
                 <p class="back-to-top">
                     <a id="top-button" class="top-button" href="#page">
                         <span class="icon-arrow-up" aria-hidden="true"></span>
