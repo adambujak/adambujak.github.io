@@ -18,8 +18,7 @@ author:
 
 # Contact form setings
 email: adamjbujak@gmail.com
-contact_page_description: "Feel free to contact me!"
-thankyou_page_description: "Your message has been successfully sent. We will contact you very soon!"
+contact_page_description: "Feel free to contact me! <br> <br> <a>adamjbujak@gmail.com</a>"
 
 # Social links
 github: 'adambujak'
