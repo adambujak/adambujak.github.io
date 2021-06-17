@@ -49,9 +49,9 @@ These are the registers we are working with:
 
 ![Registers](assets/images/atmega_gpio_registers.png)
 
-So in order to toggle the pin we need to set it as an output by setting bit 5 of DDRB to 1 this can be done by the following C code: DDRB = 1 << 5;. The << is called a bitshift operator, in case you're confused by that. Keep in mind that this will write the value of 1 << 5 to the register, so if you already have some other pin in port B configured as an output, this will reconfigure it to an input. To avoid this you can bitwise OR the register with your new value: DDRB |= (1 << 5); .
+So in order to toggle the pin we need to set it as an output by setting bit 5 of DDRB to 1 this can be done by the following C code: `DDRB = 1 << 5;`. The `<<` is called a bitshift operator, in case you're confused by that. Keep in mind that this will write the value of 1 << 5 to the register, so if you already have some other pin in port B configured as an output, this will reconfigure it to an input. To avoid this you can bitwise OR the register with your new value: `DDRB |= (1 << 5);` .
 
-Then to set the pin high we need to set bit 5 of the PORTB register to 1. Again this can be done by PORTB = (1 << 5);.
+Then to set the pin high we need to set bit 5 of the PORTB register to 1. Again this can be done by `PORTB = (1 << 5);`.
 
 
 So the equivalent C code of the Arduino code above will look like this:
