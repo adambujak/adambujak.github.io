@@ -74,8 +74,11 @@ int main()
 ```
 
 There are three main things that are simplified in this code:
+
   1) We include the ATmega328P.h file. In practice you will always include something like this as this is what will define the registers on your MCU.
-  2) We inclue delay.h. This is just to make this code simpler, usually there will be a delay function defined for you somewhere in the SDK.
+
+  2) We include delay.h. This is just to make this code simpler, usually there will be a delay function defined for you somewhere in the SDK.
+
   3) We ignored any chip setup that usually would happen such as setting up any external oscillators, enabling clocks, etc. that is out of the scope of this example.
 
 There is still some mystery around point 1) above. Where do DDRB and PORTB come from? Well they are defined for us in the above example, but we could define them ourselves by casting a pointer to an address.
