@@ -8,7 +8,7 @@ I'm assuming you're familiar with basic C, and the very basics of Arduino (GPIO,
 
 Once you know how to program your microcontroller, it all makes sense (duh,) but when I was getting started with my nRF52DK I was so confused by all the things that were available to download. There's an SDK, the "Soft Devices", the nRF Programming Tools, the JLink Software, SEGGER Embedded Studio, the ARM GNU Compiler... needless to say, it's overwhelming when you're new to this kind of stuff.
 
-I'm going to break some of these things individually since they are generally applicable to most microcontrollers (MCUs.)
+I'll explain some of these things individually since they are generally applicable to most microcontrollers (MCUs.)
 
 ## SDK
 
