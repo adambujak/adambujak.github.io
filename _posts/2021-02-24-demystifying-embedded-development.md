@@ -37,24 +37,24 @@ The Arduino UNO R3 uses an ATmega328P as the MCU, and its datasheet can be found
 
 If we look at section 14 of the datasheet we can understand how I/Os work on this chip. I recommend reading this yourself, but the important takeaway is we can configure the MCU's pins by writing the registers in the I/O hardware block.
 
-We set the pin direction (in or out) with the `DDRx` register, by setting the corresponding pin's bit (1 for output, 0 for input,) and we set the pin's output value by setting the pins bit in the `PORTx` register, where `x` represents the letter of the port.
+We set the pin direction (in or out) with the DDRx register, by setting the corresponding pin's bit (1 for output, 0 for input,) and we set the pin's output value by setting the pins bit in the PORTx register, where x represents the letter of the port.
 
-For instance for pin `PB5` we'd be using the registers `DDRB` and `PORTB`.
+For instance for pin PB5 we'd be using the registers DDRB and PORTB.
 
 That's a bit hard to understand if you've never seen anything like that before, so keep reading for a practical example.
 
-Pin `D13` on the Arduino UNO R3 is actually pin `PB5` on the ATmega328P, so I'll continue to use that in the following examples.
+Pin D13 on the Arduino UNO R3 is actually pin PB5 on the ATmega328P, so I'll continue to use that in the following examples.
 
 These are the registers we are working with:
 
 ![Registers](assets/images/atmega_gpio_registers.png)
 
-So in order to toggle the pin we need to set it as an output by setting bit 5 of `DDRB` to `1` this can be done by the following `C` code: `DDRB = 1 << 5;`. The `<<` is called a bitshift operator, in case you're confused by that. Keep in mind that this will write the value of `1 << 5` to the register, so if you already have some other pin in port B configured as an output, this will reconfigure it to an input. To avoid this you can `bitwise OR` the register with your new value: `DDRB |= (1 << 5);` .
+So in order to toggle the pin we need to set it as an output by setting bit 5 of DDRB to 1 this can be done by the following C code: DDRB = 1 << 5;. The << is called a bitshift operator, in case you're confused by that. Keep in mind that this will write the value of 1 << 5 to the register, so if you already have some other pin in port B configured as an output, this will reconfigure it to an input. To avoid this you can bitwise OR the register with your new value: DDRB |= (1 << 5); .
 
-Then to set the pin high we need to set bit 5 of the `PORTB` register to 1. Again this can be done by `PORTB = (1 << 5);`.
+Then to set the pin high we need to set bit 5 of the PORTB register to 1. Again this can be done by PORTB = (1 << 5);.
 
 
-So the equivalent `C` code of the Arduino code above will look like this:
+So the equivalent C code of the Arduino code above will look like this:
 
 ```
 #include "ATmega328P.h" // include the register information so we have DDRB and PORTB
@@ -74,13 +74,13 @@ int main()
 ```
 
 There are three main things that are simplified in this code:
-  1) We include the `ATmega328P.h` file. In practice you will always include something like this as this is what will define the registers on your MCU.
-  2) We inclue `delay.h`. This is just to make this code simpler, usually there will be a `delay` function defined for you somewhere in the SDK.
+  1) We include the ATmega328P.h file. In practice you will always include something like this as this is what will define the registers on your MCU.
+  2) We inclue delay.h. This is just to make this code simpler, usually there will be a delay function defined for you somewhere in the SDK.
   3) We ignored any chip setup that usually would happen such as setting up any external oscillators, enabling clocks, etc. that is out of the scope of this example.
 
-There is still some mystery around point 1) above. Where do `DDRB` and `PORTB` come from? Well they are defined for us in the above example, but we could define them ourselves by casting a pointer to an address.
+There is still some mystery around point 1) above. Where do DDRB and PORTB come from? Well they are defined for us in the above example, but we could define them ourselves by casting a pointer to an address.
 
-From the datasheet we can see that `DDRB` is at address `0x24` and `PORTB` is at address `0x25`.
+From the datasheet we can see that DDRB is at address 0x24 and PORTB is at address 0x25.
 
 So we can write some simple code above our main function to define these registers:
 
