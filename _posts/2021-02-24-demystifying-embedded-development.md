@@ -15,7 +15,7 @@ I'll explain some of these things individually since they are generally applicab
 You have likely heard of SDKs (Software Development Kits) before; they are essentially a collection of pieces of software that are made to make your development work quicker and easier. If you want to develop Android apps, you download the Android SDK, if you want to develop embedded software you download the SDK for the microcontroller you're using (provided it exists.) In an embedded environment the SDK usually includes example projects, a HAL (Hardware Abstraction Layer - see below), tools, etc - basically everything you need to get started to building your software.
 
 ### HAL - Hardware Abstraction Layer
-The HAL is one of the most useful components in an SDK. You don't have to use it if you don't want to, but you'd be crazy not to. To understand what it is consider the following Arduino code:
+The HAL is one of the most useful components in an SDK. You don't have to use it if you don't want to, but it can greatly speed up development. To understand what it is consider the following Arduino code:
 
 ```
 #define LED_PIN 13
